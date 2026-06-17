@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chez Steph — Massages Bien-être</title>
+<meta name="description" content="Massages bien-être à Pecquencourt — Un espace de douceur, de calme et de soin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sand:#F5EDE0;
+  --sand2:#EDE0CC;
+  --clay:#B07848;
+  --clay2:#C89060;
+  --dark:#2C1F13;
+  --mid:#7A5C3A;
+  --sage:#8EA08A;
+  --sage2:#C4D4C0;
+  --white:#FDFAF5;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--sans);background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6;max-width:100vw;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  width:100%;max-width:100vw;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 3rem;
+  background:rgba(253,250,245,0);
+  transition:background .4s,backdrop-filter .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{background:rgba(253,250,245,0.93);backdrop-filter:blur(16px);border-color:rgba(44,31,19,0.08);}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--white);letter-spacing:.06em;text-decoration:none;transition:color .3s;}
+nav.scrolled .nav-logo{color:var(--dark);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center;}
+.nav-links a{font-size:.8rem;font-weight:300;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s;}
+nav.scrolled .nav-links a{color:var(--mid);}
+.nav-links a:hover,.nav-links a.cta{color:var(--white) !important;}
+.nav-links a.cta{background:var(--clay);padding:.55rem 1.35rem;border-radius:2rem;letter-spacing:.08em;transition:background .2s !important;}
+nav.scrolled .nav-links a.cta{color:var(--white) !important;}
+.nav-links a.cta:hover{background:var(--dark);}
+
+/* ── HERO FULL ── */
+.hero{
+  position:relative;height:100svh;min-height:600px;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:8vh;overflow:hidden;max-width:100%;width:100%;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&q=80') center/cover no-repeat;
+  will-change:transform;
+}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom, rgba(20,12,6,.55) 0%, rgba(20,12,6,.35) 35%, rgba(20,12,6,.82) 100%);}
+.hero-pattern{
+  position:absolute;inset:0;z-index:2;opacity:.12;
+  background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='60' cy='25' rx='6' ry='18' fill='none' stroke='%23F5EDE0' stroke-width='0.8'/%3E%3Cellipse cx='60' cy='95' rx='6' ry='18' fill='none' stroke='%23F5EDE0' stroke-width='0.8'/%3E%3Cellipse cx='25' cy='60' rx='18' ry='6' fill='none' stroke='%23F5EDE0' stroke-width='0.8'/%3E%3Cellipse cx='95' cy='60' rx='18' ry='6' fill='none' stroke='%23F5EDE0' stroke-width='0.8'/%3E%3Ccircle cx='60' cy='60' r='3' fill='%23F5EDE0' fill-opacity='.4'/%3E%3C/svg%3E");
+  background-size:120px 120px;
+}
+.hero-content{position:relative;z-index:3;text-align:center;padding:0 1.5rem;width:100%;}
+.hero-badge{display:inline-block;font-family:var(--sans);font-size:.68rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.55);padding:.45rem 1.2rem;border-radius:2rem;margin-bottom:1.75rem;text-shadow:0 1px 4px rgba(0,0,0,.4);}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,8vw,6.5rem);font-weight:300;color:var(--white);line-height:1.05;letter-spacing:-.01em;margin-bottom:1.5rem;text-shadow:0 2px 20px rgba(20,12,6,.5);}
+.hero-title em{font-style:italic;color:var(--clay2);}
+.hero-sub{font-family:var(--sans);font-size:1rem;font-weight:300;color:rgba(255,255,255,.92);max-width:46ch;margin:0 auto 2.5rem;line-height:1.75;letter-spacing:.02em;text-shadow:0 1px 8px rgba(20,12,6,.6);}
+.hero-actions{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;}
+.btn-white{display:inline-flex;align-items:center;gap:.6rem;background:var(--white);color:var(--dark);font-family:var(--sans);font-size:.85rem;font-weight:400;letter-spacing:.06em;padding:.9rem 2rem;border-radius:3rem;text-decoration:none;transition:background .2s,transform .2s;}
+.btn-white:hover{background:var(--sand);transform:translateY(-2px);}
+.btn-outline-w{display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid rgba(255,255,255,.7);color:var(--white);font-family:var(--sans);font-size:.85rem;font-weight:300;letter-spacing:.06em;padding:.9rem 2rem;border-radius:3rem;text-decoration:none;transition:border-color .2s,background .2s,transform .2s;background:rgba(0,0,0,.15);}
+.btn-outline-w:hover{border-color:var(--white);background:rgba(255,255,255,.15);transform:translateY(-2px);}
+.scroll-down{position:absolute;bottom:2rem;left:0;right:0;width:fit-content;margin:0 auto;z-index:3;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:rgba(255,255,255,.6);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;animation:fadeUp 2s 2s both;}
+.scroll-needle{width:1px;height:3rem;background:linear-gradient(to bottom,rgba(255,255,255,.6),transparent);animation:needleDown 2s ease-in-out infinite;}
+@keyframes needleDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── BANDE ── */
+.intro-band{background:var(--dark);overflow:hidden;isolation:isolate;position:relative;clip-path:inset(0);padding:0;height:2.75rem;display:flex;align-items:center;border-top:1px solid rgba(176,120,72,.2);border-bottom:1px solid rgba(176,120,72,.2);max-width:100%;}
+.intro-band-track{display:flex;align-items:center;gap:0;animation:ticker 28s linear infinite;white-space:nowrap;will-change:transform;flex-shrink:0;min-width:max-content;}
+.intro-band-track:hover{animation-play-state:paused;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.intro-band-item{display:inline-flex;align-items:center;gap:.6rem;color:rgba(232,210,185,.7);font-size:.72rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;padding:0 2.5rem;white-space:nowrap;}
+.intro-band-item span{color:var(--clay2);}
+.intro-band-dot{width:3px;height:3px;border-radius:50%;background:rgba(176,120,72,.4);flex-shrink:0;}
+
+/* ── SECTION BASE ── */
+.s{padding:6rem 3rem;width:100%;max-width:100%;}
+.s-narrow{max-width:1200px;margin:0 auto;width:100%;}
+
+/* ── SPLIT ── */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:90vh;width:100%;max-width:100%;overflow:hidden;}
+.split-img{position:relative;overflow:hidden;}
+.split-img img{width:100%;height:100%;object-fit:cover;transition:transform 8s ease;display:block;}
+.split-img:hover img{transform:scale(1.04);}
+.split-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,19,.3),transparent);}
+.split-text{background:var(--sand);display:flex;flex-direction:column;justify-content:center;padding:5rem 4rem;}
+.eyebrow{font-size:.68rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:1.25rem;}
+.h2{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--dark);margin-bottom:1.5rem;}
+.h2 em{font-style:italic;color:var(--clay);}
+.body-text{font-size:.95rem;font-weight:300;color:var(--mid);line-height:1.8;margin-bottom:2rem;max-width:44ch;}
+.sig{font-family:var(--serif);font-size:2rem;font-style:italic;font-weight:300;color:var(--clay);}
+
+/* ── GALERIE ── */
+.gallery{padding:0;display:grid;grid-template-columns:repeat(3,1fr);width:100%;max-width:100%;overflow:hidden;}
+.gal-item{position:relative;overflow:hidden;aspect-ratio:3/4;}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .6s;}
+.gal-item:hover img{transform:scale(1.06);filter:brightness(1.05);}
+.gal-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,31,19,.75) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s;}
+.gal-item:hover .gal-item-overlay{opacity:1;}
+.gal-label{font-family:var(--serif);font-size:1.5rem;font-weight:300;font-style:italic;color:var(--white);}
+.gal-sub{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.7);letter-spacing:.08em;margin-top:.35rem;}
+
+/* ── SOINS ── */
+.soins-section{background:var(--white);}
+.soins-header{text-align:center;margin-bottom:4rem;}
+.soins-header .h2{margin:0 auto 1rem;max-width:28ch;}
+.soins-header .body-text{margin:0 auto;text-align:center;}
+.soins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--sand2);}
+.soin{background:var(--white);padding:3rem 2.5rem;transition:background .3s;position:relative;overflow:hidden;}
+.soin::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--clay2),var(--clay));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.soin:hover{background:var(--sand);}
+.soin:hover::after{transform:scaleX(1);}
+.soin-icon{width:3.5rem;height:3.5rem;margin-bottom:1.75rem;}
+.soin-name{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--dark);margin-bottom:.75rem;line-height:1.2;}
+.soin-desc{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:1.75rem;}
+.soin-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--sand2);padding-top:1.25rem;}
+.soin-duree{font-size:.75rem;color:var(--mid);letter-spacing:.06em;}
+.soin-prix{font-family:var(--serif);font-size:1.4rem;color:var(--clay);font-weight:300;}
+.btn-soin{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--clay);color:var(--clay);font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.08em;text-transform:uppercase;padding:.6rem 1.4rem;border-radius:3rem;text-decoration:none;transition:background .2s,color .2s,transform .2s;margin-top:.75rem;}
+.btn-soin:hover{background:var(--clay);color:var(--white);transform:translateY(-1px);}
+
+/* ── TEXTURE BREAK ── */
+.texture-break{position:relative;height:60vh;overflow:hidden;}
+.texture-break img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.texture-break-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(44,31,19,.5),rgba(44,31,19,.65));display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem;}
+.texture-quote{font-family:var(--serif);font-size:clamp(1.6rem,4vw,3rem);font-weight:300;font-style:italic;color:var(--white);max-width:28ch;line-height:1.35;}
+.texture-quote::before{content:'\201C';font-size:4rem;line-height:0;vertical-align:-1rem;opacity:.4;margin-right:.25rem;}
+
+/* ── DÉROULEMENT ── */
+.deroulement{background:var(--dark);padding:7rem 3rem;}
+.deroulement .eyebrow{color:var(--clay2);}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:4rem;}
+.step{padding:2rem 1.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(176,120,72,.18);border-radius:1rem;backdrop-filter:blur(4px);transition:background .3s;}
+.step:hover{background:rgba(255,255,255,.1);}
+.step-n{font-family:var(--serif);font-size:4rem;font-weight:300;color:rgba(176,120,72,.45);line-height:1;margin-bottom:1.25rem;}
+.step-t{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--sand);margin-bottom:.6rem;}
+.step-p{font-size:.83rem;font-weight:300;color:rgba(245,237,224,.92);line-height:1.7;}
+
+/* ── MOSAIC ── */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,280px);gap:4px;padding:4px;width:100%;max-width:100%;overflow:hidden;}
+.mosaic-item{overflow:hidden;position:relative;}
+.mosaic-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+.mosaic-item:hover img{transform:scale(1.06);}
+.mosaic-item.wide{grid-column:span 2;}
+
+/* ── AVIS ── */
+.avis-section{background:var(--sand);}
+.avis-inner{max-width:1100px;margin:0 auto;}
+.avis-header{text-align:center;margin-bottom:4rem;}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.avis-card{background:var(--white);border-radius:1rem;padding:2rem 1.75rem;}
+.avis-stars{color:var(--clay);font-size:.9rem;letter-spacing:.1em;margin-bottom:.9rem;}
+.avis-text{font-family:var(--serif);font-size:1.05rem;font-style:italic;font-weight:300;color:var(--dark);line-height:1.65;margin-bottom:1.25rem;}
+.avis-author{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);}
+
+/* ── CONTACT ── */
+.contact-section{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;width:100%;max-width:100%;overflow:hidden;}
+.contact-img{position:relative;overflow:hidden;}
+.contact-img img{width:100%;height:100%;object-fit:cover;display:block;}
+.contact-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(44,31,19,.4),transparent);}
+.contact-form-side{background:var(--sand);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;}
+.form-title{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--dark);margin-bottom:2rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
+.fg label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);}
+.fg input,.fg select,.fg textarea{background:var(--white);border:1.5px solid transparent;border-radius:.5rem;padding:.75rem 1rem;font-family:var(--sans);font-size:.9rem;font-weight:300;color:var(--dark);outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--clay);}
+.fg textarea{resize:vertical;min-height:90px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fsub{width:100%;background:var(--clay);color:var(--white);border:none;border-radius:3rem;padding:.9rem;font-family:var(--sans);font-size:.85rem;font-weight:400;letter-spacing:.08em;cursor:pointer;margin-top:.5rem;transition:background .2s,transform .2s;}
+.fsub:hover{background:var(--dark);transform:translateY(-1px);}
+
+/* ── BOTANICAL ── */
+.botanical-divider{position:relative;overflow:hidden;height:200px;background:var(--white);display:flex;align-items:center;justify-content:center;}
+.botanical-svg{width:100%;max-width:900px;opacity:.12;}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:3.5rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;width:100%;max-width:100%;}
+.footer-brand{font-family:var(--serif);font-size:1rem;font-weight:300;color:var(--sand);letter-spacing:.04em;}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-size:.75rem;color:rgba(197,174,148,.45);text-decoration:none;letter-spacing:.06em;transition:color .2s;}
+.footer-links a:hover{color:var(--clay2);}
+.footer-copy{font-size:.72rem;color:rgba(197,174,148,.3);letter-spacing:.06em;}
+
+/* ── REVEAL ── */
+.r{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.r.vis{opacity:1;transform:none;}
+.r[data-d="1"]{transition-delay:.1s;}
+.r[data-d="2"]{transition-delay:.2s;}
+.r[data-d="3"]{transition-delay:.3s;}
+.r[data-d="4"]{transition-delay:.4s;}
+
+/* ── CAROUSEL GALERIE MOBILE ── */
+.gallery-carousel-wrap{display:none;padding:0;}
+.gallery-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:1rem;padding:0 1.5rem;}
+.gallery-carousel::-webkit-scrollbar{display:none;}
+.gallery-carousel .gal-item{flex:0 0 calc(100vw - 4.5rem);max-width:360px;scroll-snap-align:start;aspect-ratio:4/5;border-radius:1.25rem;overflow:hidden;flex-shrink:0;}
+.gallery-carousel .gal-item img{transition:none;}
+.gallery-carousel .gal-item-overlay{opacity:1;background:linear-gradient(to top,rgba(44,31,19,.7) 0%,transparent 55%);}
+.carousel-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.1rem;}
+.carousel-dots span{width:6px;height:6px;border-radius:50%;background:var(--sand2);transition:background .25s,width .25s;border-radius:3px;}
+.carousel-dots span.active{background:var(--clay);width:18px;}
+
+/* ── SOINS ACCORDÉON MOBILE ── */
+.soins-accordion{display:none;flex-direction:column;gap:0;border:1px solid var(--sand2);border-radius:1rem;overflow:hidden;}
+.soin-acc{border-bottom:1px solid var(--sand2);background:var(--white);}
+.soin-acc:last-child{border-bottom:none;}
+.soin-acc-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;cursor:pointer;gap:1rem;-webkit-tap-highlight-color:transparent;}
+.soin-acc-left{display:flex;align-items:center;gap:1rem;}
+.soin-acc-left .soin-icon{width:2.25rem;height:2.25rem;flex-shrink:0;margin:0;}
+.soin-acc-title{font-family:var(--serif);font-size:1.25rem;font-weight:300;color:var(--dark);line-height:1.2;}
+.soin-acc-price{font-family:var(--serif);font-size:1rem;color:var(--clay);font-weight:300;white-space:nowrap;}
+.soin-acc-arrow{width:1.5rem;height:1.5rem;flex-shrink:0;color:var(--clay);transition:transform .3s var(--ease);}
+.soin-acc.open .soin-acc-arrow{transform:rotate(180deg);}
+.soin-acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease);}
+.soin-acc.open .soin-acc-body{grid-template-rows:1fr;}
+.soin-acc-inner{overflow:hidden;padding:0 1.5rem;}
+.soin-acc.open .soin-acc-inner{padding:0 1.5rem 1.5rem;}
+.soin-acc-desc{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.75;margin-bottom:1rem;}
+.soin-acc-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;border-top:1px solid var(--sand2);padding-top:.85rem;}
+.soin-acc-duree{font-size:.75rem;color:var(--mid);letter-spacing:.06em;}
+
+/* ── CAROUSEL AVIS MOBILE ── */
+.avis-carousel-wrap{display:none;}
+.avis-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;padding:0 1.5rem 1rem;scrollbar-width:none;}
+.avis-carousel::-webkit-scrollbar{display:none;}
+.avis-carousel .avis-card{flex:0 0 82vw;max-width:320px;scroll-snap-align:center;}
+
+/* ── MOSAIQUE CAROUSEL MOBILE ── */
+.mosaic-carousel-wrap{display:none;}
+.mosaic-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:.25rem;padding:.25rem;scrollbar-width:none;}
+.mosaic-carousel::-webkit-scrollbar{display:none;}
+.mosaic-carousel .mosaic-item{flex:0 0 72vw;max-width:280px;scroll-snap-align:center;height:220px;border-radius:.75rem;}
+.mosaic-carousel .mosaic-item.wide{flex:0 0 85vw;max-width:340px;}
+
+/* ── TIMELINE MOBILE ── */
+.timeline-mobile{display:none;position:relative;margin-top:2.75rem;padding:0 1rem;}
+/* ligne centrale */
+.timeline-mobile::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:1px;background:linear-gradient(to bottom,rgba(176,120,72,0),rgba(176,120,72,.45) 8%,rgba(176,120,72,.45) 92%,rgba(176,120,72,0));
+  transform:translateX(-50%);
+}
+.tl-item{
+  display:grid;grid-template-columns:1fr 3rem 1fr;
+  align-items:start;gap:0;margin-bottom:2rem;
+}
+.tl-item:last-child{margin-bottom:0;}
+/* bulle numérotée centrale */
+.tl-dot{
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:flex-start;padding-top:.15rem;position:relative;z-index:2;
+}
+.tl-dot-inner{
+  width:2.4rem;height:2.4rem;border-radius:50%;
+  background:var(--dark);border:1.5px solid rgba(176,120,72,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:.85rem;color:var(--clay2);font-weight:300;
+  flex-shrink:0;
+  box-shadow:0 0 0 4px var(--dark);
+}
+/* carte texte */
+.tl-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(176,120,72,.18);
+  border-radius:.85rem;padding:1.1rem 1.25rem;backdrop-filter:blur(4px);
+}
+.tl-card-n{font-family:var(--serif);font-size:.7rem;color:rgba(176,120,72,.5);letter-spacing:.1em;margin-bottom:.3rem;}
+.tl-card-t{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--sand);margin-bottom:.4rem;line-height:1.2;}
+.tl-card-p{font-size:.8rem;font-weight:300;color:rgba(245,237,224,.8);line-height:1.65;}
+/* côtés alternés */
+.tl-item.left .tl-card{grid-column:1;text-align:right;}
+.tl-item.left .tl-dot{grid-column:2;}
+.tl-item.left .tl-empty{grid-column:3;}
+.tl-item.right .tl-empty{grid-column:1;}
+.tl-item.right .tl-dot{grid-column:2;}
+.tl-item.right .tl-card{grid-column:3;}
+/* connecteur horizontal bulle→carte */
+.tl-item.left .tl-dot::after,
+.tl-item.right .tl-dot::after{
+  content:'';position:absolute;top:1.15rem;height:1px;width:1rem;
+  background:rgba(176,120,72,.35);
+}
+.tl-item.left .tl-dot::after{right:2.4rem;}
+.tl-item.right .tl-dot::after{left:2.4rem;}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .botanical-divider{height:30px;}
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .hero{padding-bottom:10vh;justify-content:flex-end;}
+  .hero-content{padding:0 1.25rem;}
+  .hero-badge{font-size:.62rem;letter-spacing:.16em;padding:.4rem 1rem;}
+  .hero-title{font-size:clamp(2.4rem,11vw,4rem);margin-bottom:1.25rem;}
+  .hero-sub{font-size:.92rem;margin-bottom:2rem;max-width:36ch;}
+  .hero-actions{flex-direction:column;align-items:center;gap:.85rem;width:100%;padding:0 .5rem;}
+  .btn-white,.btn-outline-w{width:100%;max-width:320px;justify-content:center;padding:.95rem 1.5rem;font-size:.88rem;}
+  .split{grid-template-columns:1fr;min-height:auto;}
+  .split-img{height:60vw;}
+  .split-text{padding:3rem 1.5rem;}
+  /* Galerie : masquer la grille, afficher le carousel */
+  .gallery{display:none;}
+  .gallery-carousel-wrap{display:block;padding:1.5rem 0 2rem;}
+  /* Soins : masquer la grille, afficher l'accordéon */
+  .soins-grid{display:none;}
+  .soins-accordion{display:flex;}
+  /* Steps : masquer la grille desktop, afficher la timeline mobile */
+  .steps{display:none;}
+  .steps-mobile{display:none;}
+  .timeline-mobile{display:block;}
+  .steps-scroll-wrap{display:none;}
+  /* Mosaïque : masquer la grille, afficher le carousel */
+  .mosaic{display:none;}
+  .mosaic-carousel-wrap{display:block;padding:.5rem 0 .5rem 1.5rem;}
+  /* Avis : masquer la grille, afficher le carousel */
+  .avis-grid{display:none;}
+  .avis-carousel-wrap{display:block;}
+  .contact-section{grid-template-columns:1fr;}
+  .contact-img{height:55vw;}
+  .contact-form-side{padding:3rem 1.5rem;}
+  .frow{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1.25rem;}
+  .s{padding:4rem 1.5rem;}
+  .deroulement{padding:4rem 1.5rem;}
+}
+@media(max-width:500px){
+  .gallery-carousel .gal-item{flex:0 0 88vw;}
+  .mosaic-carousel .mosaic-item{height:200px;}
+  .steps-scroll .step{width:80vw;}
+  .soins-accordion .soin-acc-title{font-size:1.1rem;}
+  .steps{display:none;}
+  .mosaic{display:none;}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important;}}
+
+/* ═══════════════════════════════════════════════════
+   HAMBURGER — FIX PRINCIPAL
+   ───────────────────────────────────────────────────
+   CAUSE DU BUG :
+   Le burger était enfant de <nav> (z-index:200).
+   Le menu overlay était z-index:250 → il recouvrait la nav,
+   rendant le burger non-cliquable une fois le menu ouvert.
+
+   SOLUTION :
+   1. Burger sorti du <nav> et placé en position:fixed
+      avec z-index:400 (strictement > menu à z-index:300).
+   2. Menu overlay descendu à z-index:300 (< burger).
+   3. Couleur du burger gérée explicitement selon l'état.
+   ═══════════════════════════════════════════════════ */
+
+/* FIX 1 : burger en fixed autonome, z-index:400 */
+.nav-burger{
+  display:none;
+  flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:.5rem;
+  position:fixed;
+  top:.85rem;
+  right:1.5rem;
+  z-index:400; /* > menu (300) → toujours cliquable */
+}
+.nav-burger span{
+  display:block;width:24px;height:1.5px;
+  background:var(--white); /* blanc par défaut (hero sombre) */
+  border-radius:2px;
+  transition:transform .3s,opacity .3s,background .3s;
+}
+/* Nav scrollée + menu fermé → burger sombre */
+body.nav-is-scrolled .nav-burger:not(.open) span{background:var(--dark);}
+/* Menu ouvert → burger toujours blanc (fond sombre du menu) */
+.nav-burger.open span{background:var(--white) !important;}
+/* Icône × */
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-burger.open span:nth-child(2){opacity:0;}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* FIX 2 : menu overlay z-index:300 (< burger 400) */
+.nav-mobile-menu{
+  display:none;
+  position:fixed;inset:0;
+  z-index:300; /* < burger (400) */
+  background:var(--dark);
+  flex-direction:column;align-items:center;justify-content:center;
+  gap:2.5rem;
+  opacity:0;
+  transition:opacity .28s var(--ease);
+  pointer-events:none;
+}
+/* État ouvert */
+.nav-mobile-menu.open{
+  display:flex;
+  opacity:1;
+  pointer-events:auto;
+}
+.nav-mobile-menu a{font-family:var(--serif);font-size:2rem;font-weight:300;font-style:italic;color:var(--sand);text-decoration:none;letter-spacing:.02em;transition:color .2s;}
+.nav-mobile-menu a:hover{color:var(--clay2);}
+.nav-mobile-menu a.cta-mobile{font-family:var(--sans);font-size:.85rem;font-style:normal;letter-spacing:.1em;text-transform:uppercase;background:var(--clay);color:var(--white);padding:.9rem 2.5rem;border-radius:3rem;margin-top:1rem;}
+.nav-mobile-tel{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(197,174,148,.5);margin-top:1.5rem;text-decoration:none;transition:color .2s;}
+.nav-mobile-tel:hover{color:var(--clay2);}
+
+/* NAV TEL DESKTOP */
+.nav-tel{font-size:.75rem;font-weight:300;letter-spacing:.1em;color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:.4rem;}
+nav.scrolled .nav-tel{color:var(--mid);}
+.nav-tel:hover{color:var(--clay2) !important;}
+
+/* TEL STICKY MOBILE */
+.tel-sticky{display:none;position:fixed;bottom:1.25rem;right:1.25rem;z-index:500;background:var(--clay);color:var(--white);width:3.25rem;height:3.25rem;border-radius:50%;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(176,120,72,.45);text-decoration:none;font-size:1.2rem;transition:background .2s,transform .2s;}
+.tel-sticky:hover{background:var(--dark);transform:scale(1.08);}
+
+@media(max-width:900px){
+  .nav-burger{display:flex;}
+  .nav-tel{display:none;}
+  .tel-sticky{display:flex;}
+}
+</style>
+</head>
+<body>
+
+<!-- MENU MOBILE OVERLAY -->
+<div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <a href="#soins" onclick="closeMobileMenu()">Soins</a>
+  <a href="#apropos" onclick="closeMobileMenu()">À propos</a>
+  <a href="#avis" onclick="closeMobileMenu()">Témoignages</a>
+  <a href="#contact" class="cta-mobile" onclick="closeMobileMenu()">Réserver un soin</a>
+  <a href="tel:+33XXXXXXXXX" class="nav-mobile-tel">📞 03 XX XX XX XX</a>
+</div>
+
+<!-- NAV (sans le burger) -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Chez Steph · Massages</a>
+  <ul class="nav-links">
+    <li><a href="#soins">Soins</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#avis">Témoignages</a></li>
+    <li><a href="tel:+33XXXXXXXXX" class="nav-tel">📞 03 XX XX XX XX</a></li>
+    <li><a href="#contact" class="cta">Réserver</a></li>
+  </ul>
+</nav>
+
+<!--
+  FIX : burger HORS de <nav>, en fixed autonome z-index:400
+  Était auparavant enfant de <nav> z-index:200, donc recouvert
+  par le menu overlay z-index:250 → tap impossible pour fermer.
+-->
+<button class="nav-burger" id="navBurger"
+  aria-label="Ouvrir le menu"
+  aria-expanded="false"
+  aria-controls="mobileMenu">
+  <span></span><span></span><span></span>
+</button>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Massages bien-être · Pecquencourt</div>
+    <h1 class="hero-title">Offrez-vous<br>le droit de<br><em>souffler</em></h1>
+    <p class="hero-sub">Un espace calme, des mains attentionnées, un moment entièrement pour vous.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-white">Réserver un soin</a>
+      <a href="#soins" class="btn-outline-w">Découvrir les soins</a>
+    </div>
+  </div>
+  <div class="scroll-down">
+    <div class="scroll-needle"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- BANDE -->
+<div class="intro-band">
+  <div class="intro-band-track">
+    <div class="intro-band-item"><span>✦</span> Massages bien-être depuis 8 ans</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Cabinet calme &amp; chaleureux</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Lun – Sam · 9h à 19h</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Pecquencourt · Parking gratuit</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Sur rendez-vous uniquement</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Huiles naturelles &amp; bio</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Massages bien-être depuis 8 ans</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Cabinet calme &amp; chaleureux</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Lun – Sam · 9h à 19h</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Pecquencourt · Parking gratuit</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Sur rendez-vous uniquement</div>
+    <div class="intro-band-dot"></div>
+    <div class="intro-band-item"><span>✦</span> Huiles naturelles &amp; bio</div>
+    <div class="intro-band-dot"></div>
+  </div>
+</div>
+
+<!-- GALERIE DESKTOP -->
+<div class="gallery">
+  <div class="gal-item r">
+    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" alt="Massage bien-être" loading="lazy">
+    <div class="gal-item-overlay"><div class="gal-label">Détente profonde</div><div class="gal-sub">Massage californien</div></div>
+  </div>
+  <div class="gal-item r" data-d="1">
+    <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" alt="Huiles essentielles" loading="lazy">
+    <div class="gal-item-overlay"><div class="gal-label">Huiles naturelles</div><div class="gal-sub">Soins aux huiles chaudes</div></div>
+  </div>
+  <div class="gal-item r" data-d="2">
+    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80" alt="Ambiance zen" loading="lazy">
+    <div class="gal-item-overlay"><div class="gal-label">Ambiance zen</div><div class="gal-sub">Un espace pensé pour vous</div></div>
+  </div>
+</div>
+
+<!-- GALERIE MOBILE CAROUSEL -->
+<div class="gallery-carousel-wrap" aria-label="Photos de l'espace">
+  <div class="gallery-carousel" id="galCarousel">
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=80" alt="Massage bien-être" loading="lazy">
+      <div class="gal-item-overlay"><div class="gal-label">Détente profonde</div><div class="gal-sub">Massage californien</div></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?w=800&q=80" alt="Huiles essentielles" loading="lazy">
+      <div class="gal-item-overlay"><div class="gal-label">Huiles naturelles</div><div class="gal-sub">Soins aux huiles chaudes</div></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800&q=80" alt="Ambiance zen" loading="lazy">
+      <div class="gal-item-overlay"><div class="gal-label">Ambiance zen</div><div class="gal-sub">Un espace pensé pour vous</div></div>
+    </div>
+  </div>
+  <div class="carousel-dots" id="galDots">
+    <span class="active"></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- À PROPOS SPLIT -->
+<div class="split" id="apropos">
+  <div class="split-img">
+    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=900&q=80" alt="Steph praticienne massage" loading="lazy">
+    <div class="split-img-overlay"></div>
+  </div>
+  <div class="split-text r">
+    <div class="eyebrow">Mon approche</div>
+    <h2 class="h2">Avant tout, une <em>vraie écoute</em></h2>
+    <p class="body-text">Je ne fais pas de soins à la chaîne. Avant chaque séance, on discute — de vos tensions, de votre fatigue, de ce qui vous pèse. Le massage, c'est après. Parce qu'un soin qui fait vraiment du bien, c'est celui qui vous ressemble.</p>
+    <p class="body-text" style="margin-bottom:2.5rem;">Formée aux techniques suédoises, californiennes et aux pierres chaudes, j'adapte chaque séance à ce que vous traversez ce jour-là.</p>
+    <div class="sig">Steph</div>
+  </div>
+</div>
+
+<!-- SOINS -->
+<section class="s soins-section" id="soins">
+  <div class="s-narrow">
+    <div class="soins-header r">
+      <div class="eyebrow">Les soins proposés</div>
+      <h2 class="h2">Choisissez ce dont <em>vous avez besoin</em></h2>
+      <p class="body-text">Un doute ? Je vous aide à trouver le soin qui vous convient.</p>
+    </div>
+    <!-- GRILLE DESKTOP -->
+    <div class="soins-grid">
+      <div class="soin r">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><path d="M28 10 C28 10, 42 22, 38 36 C34 46, 18 48, 16 36 C12 22, 28 10, 28 10Z" fill="#C4906020"/><path d="M28 14 C28 14, 39 24, 36 35 C33 44, 20 45, 18 35 C15 24, 28 14, 28 14Z" stroke="#B07848" stroke-width="1" fill="none"/><line x1="28" y1="14" x2="28" y2="44" stroke="#B07848" stroke-width=".8" opacity=".4"/></svg>
+        <div class="soin-name">Massage californien</div>
+        <p class="soin-desc">Mouvements lents, enveloppants, continus. Ce massage invite le système nerveux à se poser vraiment. Idéal en cas de stress ou de surcharge émotionnelle.</p>
+        <div class="soin-footer"><span class="soin-duree">60 min · 90 min</span><span class="soin-prix">à partir de 65 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
+      </div>
+      <div class="soin r" data-d="1">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><path d="M16 38 C16 28, 22 20, 28 18 C34 20, 40 28, 40 38" stroke="#B07848" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M20 38 C20 30, 24 24, 28 22 C32 24, 36 30, 36 38" fill="#C4906018"/><circle cx="28" cy="16" r="3" fill="#B07848" fill-opacity=".4"/></svg>
+        <div class="soin-name">Massage suédois</div>
+        <p class="soin-desc">Effleurages, pétrissages, pressions adaptées. Ce classique dénoue les tensions musculaires en profondeur et relance la circulation. Idéal après un effort ou une longue semaine.</p>
+        <div class="soin-footer"><span class="soin-duree">60 min</span><span class="soin-prix">à partir de 60 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
+      </div>
+      <div class="soin r" data-d="2">
+        <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><ellipse cx="22" cy="32" rx="7" ry="11" fill="#C4906020" transform="rotate(-20 22 32)"/><ellipse cx="34" cy="32" rx="7" ry="11" fill="#C4906015" transform="rotate(20 34 32)"/><ellipse cx="22" cy="32" rx="5" ry="9" stroke="#B07848" stroke-width="1" fill="none" transform="rotate(-20 22 32)"/><ellipse cx="34" cy="32" rx="5" ry="9" stroke="#B07848" stroke-width="1" fill="none" transform="rotate(20 34 32)"/></svg>
+        <div class="soin-name">Pierres chaudes</div>
+        <p class="soin-desc">La chaleur douce de galets de basalte fond les contractures les plus résistantes. Un soin sensoriel qui agit en profondeur là où les mains seules n'atteignent pas.</p>
+        <div class="soin-footer"><span class="soin-duree">75 min</span><span class="soin-prix">à partir de 80 €</span></div>
+        <a href="#contact" class="btn-soin">Réserver ce soin →</a>
+      </div>
+    </div>
+    <!-- ACCORDÉON MOBILE -->
+    <div class="soins-accordion" id="soinsAccordion">
+      <div class="soin-acc">
+        <div class="soin-acc-header">
+          <div class="soin-acc-left">
+            <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><path d="M28 10 C28 10, 42 22, 38 36 C34 46, 18 48, 16 36 C12 22, 28 10, 28 10Z" fill="#C4906020"/><path d="M28 14 C28 14, 39 24, 36 35 C33 44, 20 45, 18 35 C15 24, 28 14, 28 14Z" stroke="#B07848" stroke-width="1" fill="none"/></svg>
+            <span class="soin-acc-title">Massage californien</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
+            <span class="soin-acc-price">dès 65 €</span>
+            <svg class="soin-acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="soin-acc-body"><div class="soin-acc-inner">
+          <p class="soin-acc-desc">Mouvements lents, enveloppants, continus. Ce massage invite le système nerveux à se poser vraiment. Idéal en cas de stress ou de surcharge émotionnelle.</p>
+          <div class="soin-acc-footer"><span class="soin-acc-duree">60 min · 90 min</span><a href="#contact" class="btn-soin">Réserver →</a></div>
+        </div></div>
+      </div>
+      <div class="soin-acc">
+        <div class="soin-acc-header">
+          <div class="soin-acc-left">
+            <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><path d="M16 38 C16 28, 22 20, 28 18 C34 20, 40 28, 40 38" stroke="#B07848" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M20 38 C20 30, 24 24, 28 22 C32 24, 36 30, 36 38" fill="#C4906018"/><circle cx="28" cy="16" r="3" fill="#B07848" fill-opacity=".4"/></svg>
+            <span class="soin-acc-title">Massage suédois</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
+            <span class="soin-acc-price">dès 60 €</span>
+            <svg class="soin-acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="soin-acc-body"><div class="soin-acc-inner">
+          <p class="soin-acc-desc">Effleurages, pétrissages, pressions adaptées. Ce classique dénoue les tensions musculaires en profondeur et relance la circulation. Idéal après un effort ou une longue semaine.</p>
+          <div class="soin-acc-footer"><span class="soin-acc-duree">60 min</span><a href="#contact" class="btn-soin">Réserver →</a></div>
+        </div></div>
+      </div>
+      <div class="soin-acc">
+        <div class="soin-acc-header">
+          <div class="soin-acc-left">
+            <svg class="soin-icon" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="27" stroke="#C4906010" stroke-width="1"/><ellipse cx="22" cy="32" rx="5" ry="9" stroke="#B07848" stroke-width="1" fill="none" transform="rotate(-20 22 32)"/><ellipse cx="34" cy="32" rx="5" ry="9" stroke="#B07848" stroke-width="1" fill="none" transform="rotate(20 34 32)"/></svg>
+            <span class="soin-acc-title">Pierres chaudes</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;flex-shrink:0;">
+            <span class="soin-acc-price">dès 80 €</span>
+            <svg class="soin-acc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+          </div>
+        </div>
+        <div class="soin-acc-body"><div class="soin-acc-inner">
+          <p class="soin-acc-desc">La chaleur douce de galets de basalte fond les contractures les plus résistantes. Un soin sensoriel qui agit en profondeur là où les mains seules n'atteignent pas.</p>
+          <div class="soin-acc-footer"><span class="soin-acc-duree">75 min</span><a href="#contact" class="btn-soin">Réserver →</a></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEXTURE BREAK -->
+<div class="texture-break r">
+  <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=75" alt="Ambiance massage zen" loading="lazy">
+  <div class="texture-break-overlay">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2rem;">
+      <p class="texture-quote">Prendre soin de soi n'est pas un luxe. C'est une nécessité que vous méritez.</p>
+      <a href="#contact" style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(253,250,245,.15);border:1.5px solid rgba(253,250,245,.55);color:var(--white);font-family:var(--sans);font-size:.8rem;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.85rem 2rem;border-radius:3rem;text-decoration:none;backdrop-filter:blur(8px);transition:background .2s;" onmouseover="this.style.background='rgba(253,250,245,.25)'" onmouseout="this.style.background='rgba(253,250,245,.15)'">Prendre rendez-vous →</a>
+    </div>
+  </div>
+</div>
+
+<!-- DÉROULEMENT -->
+<section class="deroulement r">
+  <div class="s-narrow">
+    <div class="eyebrow">Comment ça se passe</div>
+    <h2 class="h2" style="color:var(--sand);">Simple, doux, <em style="color:var(--clay2)">sans surprise</em></h2>
+    <!-- GRILLE DESKTOP -->
+    <div class="steps">
+      <div class="step r"><div class="step-n">01</div><div class="step-t">On échange</div><p class="step-p">On parle de vous, de vos zones de tension, de votre état du moment. C'est ce premier échange qui oriente tout le soin.</p></div>
+      <div class="step r" data-d="1"><div class="step-n">02</div><div class="step-t">On s'installe</div><p class="step-p">La table est chauffée, l'espace est calme, une musique douce vous accueille. Vous prenez le temps qu'il faut.</p></div>
+      <div class="step r" data-d="2"><div class="step-n">03</div><div class="step-t">Le soin</div><p class="step-p">Je m'adapte à votre ressenti. N'hésitez pas à me dire si vous voulez plus de pression, moins, autre chose.</p></div>
+      <div class="step r" data-d="3"><div class="step-n">04</div><div class="step-t">La sortie</div><p class="step-p">On prend un moment après. Un verre d'eau, quelques mots si vous en avez envie. Vous repartez à votre rythme.</p></div>
+    </div>
+    <!-- TIMELINE MOBILE -->
+    <div class="timeline-mobile">
+      <div class="tl-item left">
+        <div class="tl-card">
+          <div class="tl-card-t">On échange</div>
+          <p class="tl-card-p">On parle de vous, de vos zones de tension, de votre état du moment. Ce premier échange oriente tout le soin.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner">01</div></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="tl-dot-inner">02</div></div>
+        <div class="tl-card">
+          <div class="tl-card-t">On s'installe</div>
+          <p class="tl-card-p">La table est chauffée, l'espace est calme, une musique douce vous accueille. Vous prenez le temps qu'il faut.</p>
+        </div>
+      </div>
+      <div class="tl-item left">
+        <div class="tl-card">
+          <div class="tl-card-t">Le soin</div>
+          <p class="tl-card-p">Je m'adapte à votre ressenti. Plus de pression, moins, autre chose — dites-le moi, c'est votre moment.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner">03</div></div>
+        <div class="tl-empty"></div>
+      </div>
+      <div class="tl-item right">
+        <div class="tl-empty"></div>
+        <div class="tl-dot"><div class="tl-dot-inner">04</div></div>
+        <div class="tl-card">
+          <div class="tl-card-t">La sortie</div>
+          <p class="tl-card-p">Un verre d'eau, quelques mots si vous en avez envie. Vous repartez à votre rythme.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOSAIC DESKTOP -->
+<div class="mosaic">
+  <div class="mosaic-item wide r"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&q=75" alt="Table de massage" loading="lazy"></div>
+  <div class="mosaic-item r" data-d="1"><img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=75" alt="Bougies et bien-être" loading="lazy"></div>
+  <div class="mosaic-item r" data-d="2"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75" alt="Huiles massage" loading="lazy"></div>
+  <div class="mosaic-item r" data-d="1"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=75" alt="Pierres chaudes" loading="lazy"></div>
+  <div class="mosaic-item r" data-d="2"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=75" alt="Zen espace soin" loading="lazy"></div>
+  <div class="mosaic-item wide r" data-d="3"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=75" alt="Massage relaxant" loading="lazy"></div>
+</div>
+
+<!-- MOSAIC MOBILE CAROUSEL -->
+<div class="mosaic-carousel-wrap" aria-label="Photos de l'espace">
+  <div class="mosaic-carousel">
+    <div class="mosaic-item wide"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=900&q=75" alt="Table de massage" loading="lazy"></div>
+    <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=75" alt="Bougies et bien-être" loading="lazy"></div>
+    <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=75" alt="Huiles massage" loading="lazy"></div>
+    <div class="mosaic-item"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=75" alt="Pierres chaudes" loading="lazy"></div>
+    <div class="mosaic-item wide"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=75" alt="Massage relaxant" loading="lazy"></div>
+  </div>
+</div>
+
+<!-- BOTANICAL DIVIDER -->
+<div class="botanical-divider">
+  <svg class="botanical-svg" viewBox="0 0 900 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M450 60 C450 60, 380 20, 300 30 C220 40, 160 80, 80 60" stroke="#B07848" stroke-width="1.5" fill="none"/>
+    <path d="M450 60 C450 60, 520 20, 600 30 C680 40, 740 80, 820 60" stroke="#B07848" stroke-width="1.5" fill="none"/>
+    <ellipse cx="300" cy="30" rx="25" ry="12" fill="#8EA08A" transform="rotate(-15 300 30)" fill-opacity=".6"/>
+    <ellipse cx="600" cy="30" rx="25" ry="12" fill="#8EA08A" transform="rotate(15 600 30)" fill-opacity=".6"/>
+    <ellipse cx="200" cy="58" rx="18" ry="8" fill="#8EA08A" transform="rotate(-25 200 58)" fill-opacity=".4"/>
+    <ellipse cx="700" cy="58" rx="18" ry="8" fill="#8EA08A" transform="rotate(25 700 58)" fill-opacity=".4"/>
+    <circle cx="450" cy="60" r="6" fill="#B07848" fill-opacity=".35"/>
+    <circle cx="130" cy="63" r="4" fill="#B07848" fill-opacity=".25"/>
+    <circle cx="770" cy="63" r="4" fill="#B07848" fill-opacity=".25"/>
+    <path d="M340 45 L300 30 L310 15" stroke="#8EA08A" stroke-width=".8" fill="none" opacity=".5"/>
+    <path d="M560 45 L600 30 L590 15" stroke="#8EA08A" stroke-width=".8" fill="none" opacity=".5"/>
+  </svg>
+</div>
+
+<!-- AVIS -->
+<section class="s avis-section" id="avis">
+  <div class="avis-inner">
+    <div class="avis-header r">
+      <div class="eyebrow" style="justify-content:center;display:flex;">Ce qu'elles et ils disent</div>
+      <h2 class="h2" style="text-align:center;margin:0 auto 1rem;max-width:28ch;">Des retours qui viennent <em>du cœur</em></h2>
+    </div>
+    <!-- GRILLE DESKTOP -->
+    <div class="avis-grid">
+      <div class="avis-card r"><div class="avis-stars">★★★★★</div><p class="avis-text">"Je suis ressortie comme sur un nuage. Steph a su exactement où travailler sans que j'aie à tout expliquer. Un moment rare."</p><div class="avis-author">— Marie-Claire, 42 ans</div></div>
+      <div class="avis-card r" data-d="1"><div class="avis-stars">★★★★★</div><p class="avis-text">"Accueil chaleureux, espace magnifique, et un massage qui m'a fait du bien bien au-delà de la séance. Je me suis senti vraiment pris en charge."</p><div class="avis-author">— Thomas, 35 ans</div></div>
+      <div class="avis-card r" data-d="2"><div class="avis-stars">★★★★★</div><p class="avis-text">"C'est la première fois que je me laisse aller complètement pendant un soin. Il y avait quelque chose de très sécurisant dans son approche."</p><div class="avis-author">— Amandine, 29 ans</div></div>
+    </div>
+    <!-- CAROUSEL MOBILE -->
+    <div class="avis-carousel-wrap">
+      <div class="avis-carousel" id="avisCarousel">
+        <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Je suis ressortie comme sur un nuage. Steph a su exactement où travailler sans que j'aie à tout expliquer. Un moment rare."</p><div class="avis-author">— Marie-Claire, 42 ans</div></div>
+        <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"Accueil chaleureux, espace magnifique, et un massage qui m'a fait du bien bien au-delà de la séance. Je me suis senti vraiment pris en charge."</p><div class="avis-author">— Thomas, 35 ans</div></div>
+        <div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"C'est la première fois que je me laisse aller complètement pendant un soin. Il y avait quelque chose de très sécurisant dans son approche."</p><div class="avis-author">— Amandine, 29 ans</div></div>
+      </div>
+      <div class="carousel-dots" id="avisDots">
+        <span class="active"></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-img">
+    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=80" alt="Cabinet massage Pecquencourt" loading="lazy">
+    <div class="contact-img-overlay"></div>
+  </div>
+  <div class="contact-form-side">
+    <div class="eyebrow">Prendre rendez-vous</div>
+    <h2 class="h2" style="margin-bottom:.75rem;">Quand voulez-vous <em>souffler ?</em></h2>
+    <p class="body-text" style="margin-bottom:2rem;">Écrivez-moi, je réponds dans la journée et on trouve ensemble le créneau idéal.</p>
+    <div class="form-title">Votre message</div>
+    <div class="frow">
+      <div class="fg"><label>Prénom</label><input type="text" placeholder="Marie"></div>
+      <div class="fg"><label>Nom</label><input type="text" placeholder="Dupont"></div>
+    </div>
+    <div class="fg"><label>Email</label><input type="email" placeholder="marie@email.com"></div>
+    <div class="fg">
+      <label>Soin souhaité</label>
+      <select>
+        <option value="">Choisissez…</option>
+        <option>Massage californien – 60 min (65 €)</option>
+        <option>Massage californien – 90 min (90 €)</option>
+        <option>Massage suédois – 60 min (60 €)</option>
+        <option>Pierres chaudes – 75 min (80 €)</option>
+        <option>Je ne sais pas encore – aidez-moi</option>
+      </select>
+    </div>
+    <div class="fg"><label>Message (optionnel)</label><textarea placeholder="Un contexte, une question, une disponibilité préférée…"></textarea></div>
+    <button type="button" class="fsub" id="formSubmit">Envoyer ma demande →</button>
+  </div>
+</div>
+
+<!-- TEL STICKY MOBILE -->
+<a href="tel:+33XXXXXXXXX" class="tel-sticky" aria-label="Appeler">📞</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Chez Steph · Massages bien-être</div>
+  <ul class="footer-links">
+    <li><a href="#">Mentions légales</a></li>
+    <li><a href="#">Politique de confidentialité</a></li>
+    <li><a href="#">Instagram</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 · Fait avec soin à Pecquencourt</div>
+</footer>
+
+<script>
+// ── NAV SCROLL ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > 60;
+  nav.classList.toggle('scrolled', scrolled);
+  // classe sur body pour cibler le burger via CSS sans sélecteur complexe
+  document.body.classList.toggle('nav-is-scrolled', scrolled);
+}, { passive: true });
+
+// ── PARALLAX ──
+const heroBg = document.getElementById('heroBg');
+const heroEl = heroBg.closest('.hero');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY < heroEl.offsetHeight) {
+      heroBg.style.transform = `translateY(${scrollY * 0.25}px)`;
+    }
+  }, { passive: true });
+}
+
+// ── REVEAL ──
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: .08 });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+// ═══════════════════════════════════════════════════
+// HAMBURGER — FIX
+// ───────────────────────────────────────────────────
+// CAUSE ROOT :
+//   Le burger était <button> enfant de <nav> (z-index:200).
+//   Le menu overlay avait z-index:250 → il passait PAR-DESSUS la nav,
+//   rendant le burger non-tappable une fois le menu ouvert.
+//   classList.toggle('open') sur le burger se déclenchait bien au clic
+//   initial, mais les taps suivants étaient absorbés par le menu overlay.
+//
+// CORRECTION :
+//   1. Burger sorti de <nav> → balise <button> indépendante dans le body
+//   2. position:fixed + z-index:400 sur .nav-burger → toujours au-dessus du menu
+//   3. Menu overlay z-index:300 (< burger 400)
+//   4. Gestion d'état open/close via deux fonctions dédiées
+//   5. Bonus : clic sur le fond du menu ferme aussi (UX standard)
+//   6. Bonus : touche Échap ferme le menu (accessibilité)
+// ═══════════════════════════════════════════════════
+
+const burger = document.getElementById('navBurger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function openMobileMenu() {
+  // On passe display:flex avant d'ajouter .open pour que
+  // la transition CSS opacity puisse s'enclencher
+  mobileMenu.style.display = 'flex';
+  requestAnimationFrame(() => {
+    mobileMenu.classList.add('open');
+  });
+  burger.classList.add('open');
+  burger.setAttribute('aria-expanded', 'true');
+  burger.setAttribute('aria-label', 'Fermer le menu');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded', 'false');
+  burger.setAttribute('aria-label', 'Ouvrir le menu');
+  document.body.style.overflow = '';
+  // Remet display:none une fois la transition terminée
+  mobileMenu.addEventListener('transitionend', function handler() {
+    if (!mobileMenu.classList.contains('open')) {
+      mobileMenu.style.display = 'none';
+    }
+    mobileMenu.removeEventListener('transitionend', handler);
+  });
+}
+
+// Toggle au clic burger
+burger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu();
+});
+
+// Clic sur le fond du menu (hors liens) → ferme
+mobileMenu.addEventListener('click', (e) => {
+  if (e.target === mobileMenu) closeMobileMenu();
+});
+
+// Échap → ferme
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+    closeMobileMenu();
+    burger.focus();
+  }
+});
+
+// ── ACCORDÉON SOINS MOBILE ──
+document.querySelectorAll('.soin-acc-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const acc = header.parentElement;
+    const isOpen = acc.classList.contains('open');
+    // Fermer tous
+    document.querySelectorAll('.soin-acc').forEach(a => a.classList.remove('open'));
+    // Ouvrir celui cliqué si pas déjà ouvert
+    if (!isOpen) acc.classList.add('open');
+  });
+});
+
+// ── CAROUSEL DOTS ──
+function initCarouselDots(carouselId, dotsId) {
+  const carousel = document.getElementById(carouselId);
+  const dotsEl = document.getElementById(dotsId);
+  if (!carousel || !dotsEl) return;
+  const dots = dotsEl.querySelectorAll('span');
+  const items = carousel.children;
+  carousel.addEventListener('scroll', () => {
+    let closest = 0, minDist = Infinity;
+    Array.from(items).forEach((item, i) => {
+      const dist = Math.abs(item.offsetLeft - carousel.scrollLeft - 24);
+      if (dist < minDist) { minDist = dist; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  }, { passive: true });
+}
+initCarouselDots('galCarousel', 'galDots');
+initCarouselDots('avisCarousel', 'avisDots');
+
+document.getElementById('formSubmit').addEventListener('click', () => {
+  const prenom = document.querySelector('input[placeholder="Marie"]').value.trim();
+  const nom = document.querySelector('input[placeholder="Dupont"]').value.trim();
+  const email = document.querySelector('input[type="email"]').value.trim();
+  const soin = document.querySelector('select').value;
+  const message = document.querySelector('textarea').value.trim();
+  if (!prenom || !email) { alert('Merci de renseigner au minimum votre prénom et votre email.'); return; }
+  const subject = encodeURIComponent(`Demande de rendez-vous — ${prenom} ${nom}`);
+  const body = encodeURIComponent(`Prénom : ${prenom}\nNom : ${nom}\nEmail : ${email}\nSoin souhaité : ${soin || 'Non précisé'}\n\nMessage :\n${message || '(aucun message)'}`);
+  window.location.href = `mailto:contact@chezsteph.fr?subject=${subject}&body=${body}`;
+});
+</script>
+</body>
+</html>
